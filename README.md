@@ -1,117 +1,95 @@
-<div align="center">
-  <h1>Chinese ID Generator</h1>
+# 中国身份号码生成器
 
-  <p>
-    A Python script for batch generating Chinese ID numbers.
-  </p>
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+![Static Badge](https://img.shields.io/badge/license-MIT-blue)
+![Static Badge](https://img.shields.io/badge/Python-3.7%2B-yellow)
 
-  <div>
-  <strong>
-  <samp>
+Batch generating Chinese ID numbers
 
-  [English](README.md) · [简体中文](README.zh-CN.md)
+*[Here](README.zh-CN.md) is the Chinese version.*
 
-  </samp>
-  </strong>
-  </div>
-</div>
+Support the batch generation of all valid Chinese identity numbers that comply with national standards ([GB 11643-1999](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E)) based on the wildcard patterns input by users.
+
+This project has the following characteristics:
+
+- **Wildcard support** : `-` can appear in any position and represent any number (or X, only used for check codes).
+- **Efficient Parallelism** : Automatically utilizes multi-core CPUs for parallel generation, suitable for large-scale completion, testing and other scenarios.
+- **Intelligent Date Estimation** : Automatically identify leap years and valid date ranges to avoid invalid dates.
+- **Automatic check bit calculation:** Check codes are calculated strictly in accordance with national standards to ensure compliance.
+- **Area code filtering:** The address code is based on [the data of the Ministry of Civil Affairs in 2022](https://www.mca.gov.cn/mzsj/xzqh/2022/202201xzqh.html) and supports custom whitelist filtering.
+
+> [!CAUTION]
+> This project is only for testing, data completion and educational purposes. Illegal use is strictly prohibited.
 
 ## Table of Contents
 
-<details>
-  <summary>
-    Click me to Open/Close the directory listing
-  </summary>
-
-- [Table of Contents](#table-of-contents)
-- [Introductions](#introductions)
-- [Features](#features)
-- [File Structure](#file-structure)
-- [Requirements](#requirements)
+- [Install](#install)
+  - [Prerequisite](#prerequisite)
+  - [Installation Steps](#installation-steps)
 - [Usage](#usage)
 - [Example](#example)
-  - [Input](#input)
-  - [Output](#output)
-- [Notes](#notes)
-</details>
+- [File Structure](#file-structure)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Introductions
+## Install
 
-This project is a **Chinese ID Number Generator** that supports batch generation of all valid Chinese ID numbers conforming to the national standard (GB 11643-1999) based on user input patterns with wildcards.
+### Prerequisite
 
-- Supports efficient parallel/multiprocessing generation, suitable for large-scale completion, testing, and other scenarios.
-- Administrative region codes are based on the Ministry of Civil Affairs 2022 data, with whitelist filtering.
-- Generated ID numbers are automatically validated with the check digit to ensure compliance.
+- [Python 3.7+](https://www.python.org/)
+- [pip](https://pypi.org/project/pip/)
 
-## Features
+### Installation Steps
 
-- **Wildcard Support:** `-` can appear in any position, representing any digit (or X, only for the check digit).
-- **Efficient Parallelism:** Automatically utilizes multi-core CPUs for parallel generation, supporting large-scale data completion.
-- **Smart Date Estimation:** Automatically recognizes leap years and valid date ranges, avoiding invalid dates.
-- **Automatic Check Digit Calculation:** Strictly calculates the check digit according to the national standard, ensuring every number is valid.
-- **Region Code Filtering:** Only generates IDs for valid administrative regions.
+1. Clone the repository to local
 
-## File Structure
+   ```sh
+   git clone https://github.com/your_username/ChineseIdGenerator.git
+   ```
 
-```
-├── README.md
-├── chinese_id_generator.py
-└── region_codes.json
-```
+2. Install dependencies
 
-- `chinese_id_generator.py`: Main program and core class `ChineseIdGenerator`
-- `region_codes.json`: Administrative region code data file (format: `{code: region name}`)
-
-## Requirements
-
-- Python 3.7+
-- Dependency: `tqdm`
-
-Install dependencies:
-
-```sh
-pip install tqdm
-```
+   ```sh
+   pip install tqdm
+   ```
 
 ## Usage
 
-1. Prepare region data
+1. Prepare the address code
 
-  Ensure `region_codes.json` is present in the same directory as the script.
+   Make sure that `region_codes.json` is in the same directory as the script.
 
 2. Run the generator
 
-  ```sh
-  python chinese_id_generator.py
-  ```
+   ```sh
+   python chinese_id_generator.py
+   ```
 
-3. Input Pattern
+3. Input pattern
 
-  When prompted, enter an 18-digit ID number pattern, using `-` for unknown positions. For example:
+   When prompted, enter an 18-digit ID number pattern, using `-` for unknown positions. For example:
 
-  - `11010119900101----`: Beijing Dongcheng District, January 1, 1990, any sequence code and check digit
-  - `44----1998-------X`: Any region in Guangdong Province, any date in 1998, check digit is X
+   - `11010119900101----`: Beijing Dongcheng District, January 1, 1990, any sequence code and check digit
+   - `44----1998-------X`: Any region in Guangdong Province, any date in 1998, any sequence code, check digit is X
 
 4. Output
 
-  - The program displays generation progress and total combinations.
-  - All valid results are automatically saved to a `YYYYMMDD_HHMMSS.txt` file in the current directory.
-  - The console shows a sample ID and its corresponding region.
+   During the generation process, the progress bar and the total number of combinations will be displayed.
+
+   After the generation is completed, all valid results will be automatically saved to `YYYYMMDD_HHMMSS.txt` in the same directory. One of the sample numbers will be displayed together with its corresponding administrative division.
 
 ## Example
-
-### Input
 
 ```
 行政区划编码来自民政部2022年数据，部分可能具有时效性，请注意辨别
 ==========
 请输入需要补全的18位身份号码，缺失处用'-'代替
+1101011999
+无效的输入格式！
+==========
+请输入需要补全的18位身份号码，缺失处用'-'代替
 11010119900101----
-```
-
-### Output
-
-```
 正在生成有效的身份号码...
 生成进度: 100%|██████████| 1000/1000 [00:01<00:00, 550.57comb/s]
 
@@ -119,9 +97,33 @@ pip install tqdm
 完整结果已保存至文件：20250526_202720.txt
 示例号码: 110101199001010007
 所属地区: 北京市 东城区
+==========
+请输入需要补全的18位身份号码，缺失处用'-'代替
 ```
 
-## Notes
+## File Structure
 
-- Administrative region code data may change over time. It is recommended to update region_codes.json regularly.
-- For testing, data completion, and educational purposes only. Strictly prohibited for illegal use.
+```
+├── chinese_id_generator.py
+└── region_codes.json
+```
+
+The project mainly includes the following two documents:
+
+- `chinese_id_generator.py`: Main program and core class `ChineseIdGenerator`
+- `region_codes.json`: Administrative region code data file (format: `{code: region name}`)
+
+## Maintainers
+
+[@Dr_Kee](https://github.com/derec30240)
+
+## Contributing
+
+[Open an issue](https://github.com/derec30240/ChineseIdGenerator/issues/new) or submit PRs.
+
+> [!NOTE]
+> If editing the README，please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
+## License
+
+[MIT](LICENSE) © Dr_Kee
