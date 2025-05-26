@@ -77,7 +77,7 @@ This project has the following characteristics:
 
    During the generation process, the progress bar and the total number of combinations will be displayed.
 
-   After the generation is completed, all valid results will be automatically saved to `YYYYMMDD_HHMMSS.txt` in the same directory. One of the sample numbers will be displayed together with its corresponding administrative division.
+   After the generation is completed, all valid results will be automatically saved to `yyyyMMdd_HHmmss.txt` in the same directory. One of the sample numbers will be displayed together with its corresponding administrative division.
 
 ## Example
 
