@@ -6,7 +6,7 @@
 
 批量生成中国大陆公民身份号码
 
-*英文版参见[这里](README.md)。*
+[English](README.md) | [简体中文](README.zh-CN.md)
 
 支持根据用户输入的带有通配符的模式，批量生成所有符合国家标准（[GB 11643-1999](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E)）的有效中国身份号码。
 
