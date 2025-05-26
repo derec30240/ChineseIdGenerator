@@ -4,6 +4,14 @@
   <p>
     A Python script for batch generating Chinese ID numbers.
   </p>
+
+  <div>
+  <strong>
+  <samp>
+  [English](README.md) · [简体中文](README.zh-CN.md)
+  </samp>
+  </strong>
+  </div>
 </div>
 
 ## Table of Contents
@@ -13,15 +21,16 @@
     Click me to Open/Close the directory listing
   </summary>
 
-  - [Introductions](#introductions)
-  - [Features](#features)
-  - [File Structure](#file-structure)
-  - [Requirements](#requirements)
-  - [Usage](#usage)
-  - [Example](#example)
-    - [Input](#input)
-    - [Output](#output)
-  - [Notes](#notes)
+- [Table of Contents](#table-of-contents)
+- [Introductions](#introductions)
+- [Features](#features)
+- [File Structure](#file-structure)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Example](#example)
+  - [Input](#input)
+  - [Output](#output)
+- [Notes](#notes)
 </details>
 
 ## Introductions
