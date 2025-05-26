@@ -6,7 +6,7 @@
 
 Batch generating Chinese ID numbers
 
-*[Here](README.zh-CN.md) is the Chinese version.*
+[English](README.md) | [简体中文](README.zh-CN.md)
 
 Support the batch generation of all valid Chinese identity numbers that comply with national standards ([GB 11643-1999](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E)) based on the wildcard patterns input by users.
 
