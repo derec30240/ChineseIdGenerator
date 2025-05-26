@@ -1,4 +1,4 @@
-# 中国身份号码生成器
+# Chinese ID Generator
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 ![Static Badge](https://img.shields.io/badge/license-MIT-blue)
